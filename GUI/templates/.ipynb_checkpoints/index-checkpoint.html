@@ -20,17 +20,60 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
-    
 
+    <style>
+      body {
+        background-color: #f9f9f9;
+      }
+
+      .navbar {
+        background-color: #393e46;
+        color: #fff;
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .form-control {
+        border-radius: 20px;
+        border: none;
+        background-color: #e4e4e4;
+        color: #333;
+        font-size: 1.1rem;
+      }
+
+      .form-control:focus {
+        box-shadow: none;
+        border: 2px solid #1e90ff;
+      }
+
+      .btn-primary {
+        background-color: #1e90ff;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .btn-primary:hover {
+        background-color: #0c80df;
+      }
+
+      label {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
   </head>
   <body>
     <!-- Navbar-->
     <!-- Image and text -->
-<nav class="navbar navbar-light bg-info">
-  <a class="navbar-brand" href="#">
-    Find Probable Customer Spending
-  </a>
-</nav>
+    <nav class="navbar navbar-light bg-info">
+      <a class="navbar-brand" href="#">Find Probable Customer Spending</a>
+    </nav>
     <!-- Form -->
     <div class="container">
       <form action="{{url_for('predict')}}" method="POST">
@@ -143,7 +186,6 @@
           <!--Prediction Result-->
           
         
-
           <!-- Button trigger modal -->
          
           <div class="form-group">
