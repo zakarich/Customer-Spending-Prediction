@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Customer Shopping Behaviour and Cost Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="templates/custom.css">-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    
+
+  </head>
+  <body>
+    <!-- Navbar-->
+    <!-- Image and text -->
+<nav class="navbar navbar-light bg-info">
+  <a class="navbar-brand" href="#">
+    Find Probable Customer Spending
+  </a>
+</nav>
+    <!-- Form -->
+    <div class="container">
+      <form action="{{url_for('predict')}}" method="POST">
+        <fieldset>
+      </br>
+      
+        <div class="form-group">
+          <!--Gender-->
+          <label for="gender">Gender</label>
+          <select class="form-control" id="gender" name="gender" required>
+            <option disabled selected value>-- Select an Option --</option>
+
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+          </select>
+        </div>
+        <!--Age-->
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" class="form-control" id="age" name="age" placeholder = "Age"required />
+        </div>
+        <!--Category-->
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" id="category" name="category" required>
+            <option disabled selected value>-- Select an Option --</option>
+
+            <option value="0">Books</option>
+            <option value="1">Clothing</option>
+            <option value="2">Cosmetics</option>
+            <option value="3">Food and Beverage</option>
+            <option value="4">Shoes</option>
+            <option value="5">Souvenir</option>
+            <option value="6">Technology</option>
+            <option value="7">Toys</option>
+          </select>
+        </div>
+        <!--Quantity-->
+        <div class="form-group">
+          <label for="quantity">Quantity of buying</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" placeholder = "Quantity" required />
+        </div>
+        <!--Payment Method-->
+        <div class="form-group">
+          <label for="payment_method">Payment Method</label>
+          <select class="form-control" id="payment_method" name="payment_method" required>
+            <option disabled selected value>-- Select an Option --</option>
+
+            <option value="0">Cash</option>
+            <option value="1">Credit Card</option>
+            <option value="2">Debit Card</option>
+          </select>
+        </div>
+        <!--Shopping Mall-->
+        <div class="form-group">
+            <label for="shopping_mall">Shopping Mall</label>
+            <select class="form-control" id="shopping_mall"  name="shopping_mall" required>
+              <option disabled selected value>-- Select an Option --</option>
+  
+              <option value="0">Cevahir AVM</option>
+                      <option value="1">Emaar Square Mall</option>
+                      <option value="2">Forum Istanbul</option>
+                      <option value="3">Istinye Park</option>
+                      <option value="4">Kanyon</option>
+                      <option value="5">Mall of Istanbul</option>
+                      <option value="6">Metrocity</option>
+                      <option value="7">Metropol AVM</option>
+                      <option value="8">Viaport Outlet</option>
+                      <option value="9">Zorlu Center</option>
+            </select>
+          </div>
+        
+        <!--Month-->
+        <div class="form-group">
+            <label for="month">Month</label>
+            <select class="form-control" id="month" name="month" required>
+              <option disabled selected value>-- Select an Option --</option>
+  
+              <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+            </select>
+          </div>
+        
+        <!--Year-->
+        <div class="form-group">
+            <label for="year">Year</label>
+            <select class="form-control" id="year" name="year" required>
+              <option disabled selected value>-- Select an Option --</option>
+  
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+       
+
+          <br/>
+          
+       
+          <!--Prediction Result-->
+          
+        
+          <!-- Button trigger modal -->
+         
+          <div class="form-group">
+    <input class="btn btn-outline-dark" type="submit" value="Check probable spending"/>
+  </div>
+</br>
+<div class="form-group" id="result">
+<h5>  Customer is 92% likely to spend the amount: {{result}} </h5> </div>
+
+        </fieldset>
+      </form>
+    </div>
+  
+  </body>
+</html>
