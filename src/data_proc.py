@@ -1,3 +1,4 @@
+import pickle 
 import numpy as np 
 import pandas as pd 
 import os
@@ -23,7 +24,15 @@ def plot_info(df):
 def date_split(df):
     df[["day", "month", "year"]] = df["invoice_date"].str.split("/", expand = True)
     return df
-
+def save_splits(X_train,  X_test, y_train, y_test):
+    file_Xtrain = 'dataset/Xtrain'
+    file_Ytrain = 'dataset/Ytrain'
+    file_Xtest = 'dataset/Xtest'
+    file_Ytest = 'dataset/Ytest'
+    pickle.dump(X_train,open(file_Xtrain,'wb'))
+    pickle.dump(X_test,open(file_Xtest,'wb'))
+    pickle.dump(y_train,open(file_Ytrain,'wb'))
+    pickle.dump(y_test,open(file_Ytest,'wb'))
 def missing_values_checker(df):
     count = 0
     for item in df.isnull().sum():

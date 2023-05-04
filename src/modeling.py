@@ -10,7 +10,8 @@ from sklearn.linear_model import Lasso, LassoCV
 from sklearn.linear_model import Ridge, RidgeCV
 from sklearn.preprocessing import StandardScaler
 import numpy as np
-
+import plotly.graph_objs as go
+import plotly.offline as pyo
 
 
 def split_data(df):
@@ -54,3 +55,28 @@ def Ridge_cv(X_train, y_train):
     alpha = r_cv.alpha_
     ri = Ridge(alpha = r_cv.alpha_)
     return ri.fit(X_train, y_train)
+
+def plot_comparison(models, X_train, y_train, X_test, y_test):
+    train_scores, test_scores = [], []
+    for model in models:
+        print("im in the model {}".format(model))
+        train_score = model.score(X_train, y_train)
+        test_score = model.score(X_test, y_test)
+        train_scores.append(train_score)
+        test_scores.append(test_score)
+    
+    x = np.arange(len(models))
+    fig = go.Figure([
+        go.Bar(x=x, y=train_scores, name='Train Scores'),
+        go.Bar(x=x, y=test_scores, name='Test Scores')
+    ])
+    
+    fig.update_layout(
+        title='Model Comparison',
+        xaxis=dict(tickmode='array', tickvals=x, ticktext=[type(model).__name__ for model in models]),
+        yaxis=dict(title='Accuracy'),
+        legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1),
+        barmode='group'
+    )
+    
+    pyo.iplot(fig)

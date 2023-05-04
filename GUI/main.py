@@ -3,7 +3,7 @@ import pickle
 from flask import Flask, request, render_template
 from waitress import serve
 
-model = pickle.load(open('../models/model_dt', 'rb'))
+model = pickle.load(open('../models/model_rf', 'rb'))
 
 app = Flask(__name__)
 
